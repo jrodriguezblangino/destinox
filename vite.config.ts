@@ -3,11 +3,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 
-// IMPORTANT: When deploying to GitHub Pages at https://<user>.github.io/<repo>/
-// update `base` below to '/<repo>/' (with trailing slash). For a custom domain
-// or root deployment, set base: '/'.
-export default defineConfig({
-  base: "/nombre-del-repo/",
+// GitHub Pages: https://jrodriguezblangino.github.io/destinox/
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/destinox/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -18,4 +16,4 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-});
+}));
